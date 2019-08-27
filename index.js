@@ -39,11 +39,11 @@ server.express.use(async (req, res, next) => {
 });
 
 server.express.use(
-  express.static(path.join(__dirname, 'barback_awards/build'))
+  express.static(path.join(__dirname, 'src/barback_awards/build'))
 );
 
 server.express.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'barback_awards/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'src/barback_awards/build', 'index.html'));
 });
 
 server.start(

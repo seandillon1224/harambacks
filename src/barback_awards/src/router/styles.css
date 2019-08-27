@@ -1,0 +1,16 @@
+.RouterMainOpen {
+  margin-left: 250px;
+  -webkit-transition: all 0.5s /* Safari */;
+  transition: all 0.5s;
+  padding-top: 64px;
+}
+@media (max-width: 1000px) {
+  .RouterMainOpen {
+    margin-left: 0;
+  }
+}
+.RouterMainClosed {
+  padding-top: 64px;
+  -webkit-transition: 'all 0.5s' /* Safari */;
+  transition: all 0.5s;
+}
