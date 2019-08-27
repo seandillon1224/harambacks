@@ -1,0 +1,31 @@
+type Barback {
+  id: ID! @id
+  name: String! @unique
+  email: String! @unique
+  password: String!
+  giftee: Barback 
+  note: [Note]!
+}
+
+type Note {
+  id: ID! @id
+  text: String!
+  creator: Barback!
+}
+
+type NoteVotes {
+  id: ID! @id
+  voter: Barback!
+  note: Note!
+}
+
+type Award {
+  id: ID! @id
+  name: String!
+}
+
+type AwardVotes{
+  id: ID! @id
+  award: Award!
+  voter: Barback!
+}

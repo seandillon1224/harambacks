@@ -1,0 +1,37 @@
+# import * from '../generated/prisma-client.graphql'
+
+type Mutation {
+  createNote(text: String!, name: String!): Note!
+  createBarback(name: String!, email: String!, password: String!): Barback!
+  createAwardVotes(id: ID!, name: String!): AwardVotes!
+  createAward(name: String!): Award!
+  noteVote(voter: String!, id: ID!): NoteVotes!
+  signup(
+    email: String!
+    password: String!
+    name: String!
+    secret: String!
+  ): Barback!
+  signin(email: String!, password: String!): Barback!
+}
+
+type Query {
+  barbacks: [Barback]!
+  barback(where: BarbackWhereUniqueInput!): Barback
+  notes: [Note]!
+  note(where: NoteWhereUniqueInput!): Note
+  noteVotes: [NoteVotes]!
+  noteVoteses(
+    where: NoteVotesWhereInput
+    orderBy: NoteVotesOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [NoteVotes]!
+  award: [Award]!
+  awards(where: AwardWhereUniqueInput!): Award
+  awardVotes: [AwardVotes]!
+  awardVoteses(where: AwardVotesWhereInput!): AwardVotes
+}
