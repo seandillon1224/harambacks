@@ -1,4 +1,4 @@
-# import * from '../generated/prisma-client.graphql'
+# import * from '../barback_awards/src/generated/prisma-client.graphql'
 
 type Mutation {
   createNote(text: String!, name: String!): Note!
