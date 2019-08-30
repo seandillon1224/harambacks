@@ -27,7 +27,7 @@
     "styled-components": "^4.3.2"
   },
   "scripts": {
-    "start": "nodemon -e js,graphql -x node index.js",
+    "start": "nodemon index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
