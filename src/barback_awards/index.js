@@ -48,7 +48,7 @@ server.start(
   {
     cors: {
       credentials: true,
-      origin: process.env.FRONTEND_URL,
+      origin: process.env.PORT || process.env.FRONTEND_URL,
     },
   },
   deets => {
