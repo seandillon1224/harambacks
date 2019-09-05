@@ -17,7 +17,7 @@ const Theme = {
 };
 
 const client = new ApolloClient({
-  uri: 'https://localhost:443',
+  uri: 'https://www.harambacks.com',
 });
 
 ReactDOM.render(

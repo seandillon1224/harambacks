@@ -59,7 +59,7 @@ server.start(
     https: options,
     cors: {
       credentials: true,
-      origin: 443,
+      origin: 80,
     },
   },
   deets => {
