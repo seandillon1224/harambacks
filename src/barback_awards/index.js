@@ -56,10 +56,11 @@ server.express.get('*', (req, res) => {
 
 server.start(
   {
+    port: 80,
     https: options,
     cors: {
       credentials: true,
-      origin: 80,
+      origin: false,
     },
   },
   deets => {
