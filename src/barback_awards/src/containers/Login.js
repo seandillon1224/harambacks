@@ -84,9 +84,9 @@ const StyledLogin = styled.div`
 `;
 
 const Login = withRouter(({ history }) => {
-  // if (localStorage.getItem('user')) {
-  //   history.push('/home');
-  // }
+  if (localStorage.getItem('user')) {
+    history.push('/home');
+  }
   const [signUp, setSignUp] = useState(false);
   const [error, setError] = useState('');
   const [formInputs, setFormInputs] = useState({

@@ -17,7 +17,7 @@ const Theme = {
 };
 
 const client = new ApolloClient({
-  uri: 'https://harambacks.herokuapp.com/api',
+  uri: 'https://localhost:443',
 });
 
 ReactDOM.render(
