@@ -17,7 +17,7 @@ const Theme = {
 };
 
 const client = new ApolloClient({
-  uri: '34.200.83.242',
+  uri: '',
 });
 
 ReactDOM.render(
