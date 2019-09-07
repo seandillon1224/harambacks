@@ -17,7 +17,7 @@ const Theme = {
 };
 
 const client = new ApolloClient({
-  uri: '',
+  uri: 'http://harambacks.com',
 });
 
 ReactDOM.render(
