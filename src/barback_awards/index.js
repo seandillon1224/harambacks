@@ -39,14 +39,14 @@ server.express.use(async (req, res, next) => {
   next();
 });
 
-// var options = {
-//   key: fs.readFileSync(
-//     '/opt/bitnami/letsencrypt/certificates/harambacks.com.key'
-//   ),
-//   cert: fs.readFileSync(
-//     '/opt/bitnami/letsencrypt/certificates/harambacks.com.crt'
-//   ),
-// };
+var options = {
+  key: fs.readFileSync(
+    '/opt/bitnami/letsencrypt/certificates/harambacks.com.key'
+  ),
+  cert: fs.readFileSync(
+    '/opt/bitnami/letsencrypt/certificates/harambacks.com.crt'
+  ),
+};
 
 server.express.use(express.static(path.join(__dirname, 'build')));
 
@@ -57,7 +57,7 @@ server.express.get('*', (req, res) => {
 server.start(
   {
     port: 80,
-    // https: options,
+    https: options,
     cors: {
       credentials: true,
       origin: false,
