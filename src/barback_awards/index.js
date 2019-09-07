@@ -59,7 +59,7 @@ server.start(
     port: 80,
     // https: options,
     cors: {
-      credentials: true,
+      credentials: false,
       origin: false,
     },
   },
