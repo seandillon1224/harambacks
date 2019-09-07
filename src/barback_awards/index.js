@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const https = require('https');
 
 require('dotenv').config({ path: 'variables.env' });
 const createServer = require('./createServer');
@@ -59,7 +60,7 @@ server.start(
     port: 80,
     https: options,
     cors: {
-      credentials: true,
+      credentials: false,
       origin: false,
     },
   },
