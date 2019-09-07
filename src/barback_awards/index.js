@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const https = require('https');
 
 require('dotenv').config({ path: 'variables.env' });
 const createServer = require('./createServer');
@@ -40,14 +39,14 @@ server.express.use(async (req, res, next) => {
   next();
 });
 
-var options = {
-  key: fs.readFileSync(
-    '/opt/bitnami/letsencrypt/certificates/harambacks.com.key'
-  ),
-  cert: fs.readFileSync(
-    '/opt/bitnami/letsencrypt/certificates/harambacks.com.crt'
-  ),
-};
+// var options = {
+//   key: fs.readFileSync(
+//     '/opt/bitnami/letsencrypt/certificates/harambacks.com.key'
+//   ),
+//   cert: fs.readFileSync(
+//     '/opt/bitnami/letsencrypt/certificates/harambacks.com.crt'
+//   ),
+// };
 
 server.express.use(express.static(path.join(__dirname, 'build')));
 
@@ -58,9 +57,9 @@ server.express.get('*', (req, res) => {
 server.start(
   {
     port: 80,
-    https: options,
+    // https: options,
     cors: {
-      credentials: false,
+      credentials: true,
       origin: false,
     },
   },
