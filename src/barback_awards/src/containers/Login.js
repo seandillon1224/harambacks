@@ -103,6 +103,7 @@ const Login = withRouter(({ history }) => {
   const [signin, { loading }] = useMutation(LOGIN, {
     variables: { email: formInputs.email, password: formInputs.password },
   });
+  console.log(formInputs);
   const [signup, { loading: signupLoading }] = useMutation(SIGNUP, {
     variables: {
       email: signupInputs.email,
