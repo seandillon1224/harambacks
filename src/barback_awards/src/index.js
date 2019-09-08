@@ -18,12 +18,15 @@ const Theme = {
 
 const client = new ApolloClient({
   uri: 'http://harambacks.com',
+  // uri: 'http://localhost:4444',
 });
 
 ReactDOM.render(
   <ApolloProvider client={client}>
     <ThemeProvider theme={Theme}>
-      <AppRouter />
+      <div className="App-container">
+        <AppRouter />
+      </div>
     </ThemeProvider>
   </ApolloProvider>,
   document.getElementById('root')

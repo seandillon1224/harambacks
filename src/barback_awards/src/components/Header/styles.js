@@ -74,6 +74,9 @@ const StyledHeader = styled.div`
     box-shadow: none;
   }
   .toolbarLeft {
+    @media (max-width: 500px) {
+      width: 100px;
+    }
     width: 250px;
     background-color: ${props => props.theme.darkestBlue};
     padding: 0;
@@ -94,6 +97,9 @@ const StyledHeader = styled.div`
   }
   .toolbar {
     padding: 0;
+    @media (max-width: 500px) {
+      width: calc(100% - 100px);
+    }
     max-height: 64px;
     width: calc(100% - 250px);
     background-color: #ffffff;

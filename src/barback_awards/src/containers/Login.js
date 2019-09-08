@@ -145,8 +145,8 @@ const Login = withRouter(({ history }) => {
           signup: { email, name },
         },
       } = attempt;
-      localStorage.setItem('user', JSON.stringify({ name, email }));
-      history.push('/home');
+      // localStorage.setItem('user', JSON.stringify({ name, email }));
+      // history.push('/home');
     } catch (err) {
       if (err) setError(errors[getRandomInt(4)]);
     }

@@ -13,6 +13,8 @@ import Notes from '../containers/Notes';
 import SideNav from '../components/SideNav/SideNav';
 import Header from '../components/Header/Header';
 import UploadNotes from '../containers/UploadNotes';
+import DjaisKart from '../containers/DjaisKart';
+import SecretSanta from '../containers/SecretSanta';
 import './styles.css';
 const Context = React.createContext({});
 export { Context };
@@ -46,7 +48,7 @@ const PrivateRoute = withRouter(props => {
 });
 
 const AppRouter = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   return (
     <Context.Provider value={{ show, setShow }}>
       <BrowserRouter>
@@ -57,6 +59,12 @@ const AppRouter = () => {
           <PrivateRoute
             path="/uploadnotes"
             component={UploadNotes}
+            exact={true}
+          />
+          <PrivateRoute path="/djaiskart" component={DjaisKart} exact={true} />
+          <PrivateRoute
+            path="/secretsanta"
+            component={SecretSanta}
             exact={true}
           />
         </Switch>

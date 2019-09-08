@@ -1,27 +1,34 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 //styles
-import { Nav } from "./styles";
+import { Nav } from './styles';
+import { Context } from '../../router/AppRouter';
 
-const NavList = ({ expand, link, dropdown, children, ourClass }) => {
+const NavList = ({ link, dropdown, children, ourClass }) => {
+  const { setShow } = useContext(Context);
+  const expand = () => {
+    if (window.innerWidth <= '500') {
+      setShow(false);
+    }
+  };
   return (
     <Nav
       onClick={expand}
-      active={window.location.pathname === link && "rgba(0, 0, 0, 0.12)"}
+      active={window.location.pathname === link && 'rgba(0, 0, 0, 0.12)'}
     >
       {link ? (
         <NavLink
           exact
           to={link}
           activeClassName={
-            !dropdown ? "dashboardTextActive" : "dashboardTextReviewActive"
+            !dropdown ? 'dashboardTextActive' : 'dashboardTextReviewActive'
           }
-          className={!dropdown ? "dashboardText" : "dashboardTextReview"}
+          className={!dropdown ? 'dashboardText' : 'dashboardTextReview'}
         >
           {children}
         </NavLink>
       ) : (
-        <div className={ourClass ? "dashboardTextActive" : "dashboardText"}>
+        <div className={ourClass ? 'dashboardTextActive' : 'dashboardText'}>
           {children}
         </div>
       )}

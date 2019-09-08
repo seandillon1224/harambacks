@@ -9,7 +9,7 @@ import { Context } from '../../router/AppRouter';
 const SideNav = () => {
   const { show } = useContext(Context);
   const stuff = JSON.parse(localStorage.getItem('user'));
-  console.log(stuff);
+
   return (
     <>
       <StyledSidebar open={show}>
@@ -30,6 +30,10 @@ const SideNav = () => {
           <NavList link="/viewnotes">
             <Assignment />
             View/Vote
+          </NavList>
+          <NavList link="/djaiskart">
+            <Assignment />
+            Djais Kart
           </NavList>
           <NavList link="/secretsanta">
             <Assignment />
