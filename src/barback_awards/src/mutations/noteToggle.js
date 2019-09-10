@@ -1,8 +1,8 @@
 import { gql } from 'apollo-boost';
 
 const NOTE_TOGGLE = gql`
-  mutation noteVote($voter: String!, $id: ID!, $note: String!) {
-    noteVote(voter: $voter, id: $id, note: $note) {
+  mutation noteVote($voter: String!, $id: ID!) {
+    noteVote(voter: $voter, id: $id) {
       voter {
         name
       }

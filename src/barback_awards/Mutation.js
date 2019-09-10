@@ -42,7 +42,14 @@ const Mutations = {
       throw new Error(`No barback recognized.`);
     }
     // 2. Check if their password is correct
-    const valid = await bcrypt.compare(password, user.password);
+    let valid;
+    if (user.password.includes('$')) {
+      console.log('hey');
+      valid = await bcrypt.compare(password, user.password);
+    } else {
+      console.log(password, user);
+      valid = password === user.password;
+    }
     if (!valid) {
       throw new Error('Invalid Password!');
     }

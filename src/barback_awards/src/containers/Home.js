@@ -10,7 +10,7 @@ const Home = withRouter(({ history }) => {
   }
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error...</p>;
-  console.log(localStorage.getItem('user'));
+  // console.log(localStorage.getItem('user'));
   return <div>Hey</div>;
 });
 

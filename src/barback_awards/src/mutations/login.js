@@ -5,6 +5,7 @@ const LOGIN = gql`
     signin(email: $email, password: $password) {
       name
       email
+      id
     }
   }
 `;

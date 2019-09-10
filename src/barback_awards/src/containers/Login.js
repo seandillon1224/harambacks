@@ -127,10 +127,10 @@ const Login = withRouter(({ history }) => {
       const attempt = await signin();
       const {
         data: {
-          signin: { email, name },
+          signin: { email, name, id },
         },
       } = attempt;
-      localStorage.setItem('user', JSON.stringify({ name, email }));
+      localStorage.setItem('user', JSON.stringify({ name, email, id }));
       history.push('/home');
     } catch (err) {
       if (err) setError(errors[getRandomInt(4)]);

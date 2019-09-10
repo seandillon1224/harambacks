@@ -6,7 +6,7 @@ const SecretSanta = () => {
   const barback = JSON.parse(localStorage.getItem('user'));
   const { email } = barback;
   useEffect(() => {
-    if (email === ' seandillon1224@gmail.com') {
+    if (email === 'seandillon1224@gmail.com') {
       setThing('Gian');
     }
     if (email === 'bryan@harambacks.com') {

@@ -6,17 +6,6 @@ import styled from 'styled-components';
 import { TextField } from '@material-ui/core';
 import { StyledButton, FormCard } from '../utils/styles';
 
-const StyledUpload = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  border: 1px solid grey;
-  border-radius: 5px;
-  justify-content: center;
-  align-items: center;
-  margin: 30px auto 0 auto;
-`;
-
 const UploadNotes = () => {
   const barback = JSON.parse(localStorage.getItem('user'));
   const { loading, error, data } = useQuery(getBarbacks);

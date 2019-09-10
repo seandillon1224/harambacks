@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import getNotes from '../queries/getNotes';
-import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
+import getNotesVoteBy from '../queries/getNoteVotesBy';
+import NOTE_VOTE from '../mutations/noteToggle';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import styled from 'styled-components';
 import TableNav from './TableNav';
 import { TextField } from '@material-ui/core';
@@ -39,7 +42,17 @@ const NotesDiv = styled.div`
 `;
 
 const Notes = () => {
+  const barback = JSON.parse(localStorage.getItem('user'));
   const { loading, error, data } = useQuery(getNotes);
+  const [noteVote, { loading: mutationLoading }] = useMutation(NOTE_VOTE);
+  const {
+    loading: loadingTwo,
+    error: errorTwo,
+    data: notesVotesData,
+  } = useQuery(getNotesVoteBy, {
+    variables: { id: barback.id },
+  });
+  console.log(notesVotesData);
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage] = useState(5);
   const [pageNumbers, setPageNumbers] = useState('');
@@ -60,12 +73,19 @@ const Notes = () => {
     }
     setPageNumbers(nums);
   };
-  // useEffect(() => {
-  //   if (data.notes.length) {
-  //     let length = data.notes.length;
-  //     getPageNumbers(length);
+
+  // const tryVote = async id => {
+  //   try {
+  //     const vote = await noteVote({
+  //       variables: { id, voter: barback.name },
+  //       refetchQueries: ['getNotesVoteBy'],
+  //     });
+  //     return vote
+  //   } catch (err) {
+  //     console.log(err);
   //   }
-  // }, [data.notes]);
+  // };
+
   useEffect(() => {
     if (data && data.notes && data.notes.length) {
       const filteredData = searchFilter(data.notes);
@@ -73,8 +93,9 @@ const Notes = () => {
       setCurrentPage(1);
     }
   }, [searchBarVal, data.notes]);
-  if (loading || !pageNumbers) return <p>Loading...</p>;
-  if (error) return <p>Error...</p>;
+
+  if (loading || loadingTwo || !pageNumbers) return <p>Loading...</p>;
+  if (error || errorTwo) return <p>Error...</p>;
 
   const handlePageClick = event => setCurrentPage(Number(event.target.id));
   const paginate = direction => {
@@ -95,10 +116,14 @@ const Notes = () => {
     const indexOfFirstRow = indexOfLastRow - rowsPerPage;
     return cancellationDataSearched.slice(indexOfFirstRow, indexOfLastRow);
   };
-  console.log(pageNumbers);
+
   return (
     <NotesDiv>
       <div className="notesDiv">
+        {/* <div>
+          Vote for the best! You have {5 - notesVotesData.noteVoteses.length}{' '}
+          votes remaining
+        </div> */}
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="searchDiv">
             <TextField
@@ -120,6 +145,9 @@ const Notes = () => {
           <div className="note" key={x.id}>
             <div>Creator: {x.creator.name}</div>
             <p>{x.text} </p>
+            {/* <div>
+              <button onClick={() => tryVote(x.id)}>CAST VOTE</button>
+            </div> */}
           </div>
         ))}
       </div>
